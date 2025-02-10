@@ -14,9 +14,26 @@ class PersonalAccount:
         self.__balance = balance
         self.transactions = transactions
 
+    def deposit(self, amount):
+        from datetime import datetime
+        transaction = Amount(amount, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "DEPOSIT")
+        self.__balance += amount
+        self.transactions.append(transaction)
+
+    def withdraw(self, amount):
+        if self.__balance - amount < 0:
+            print("Insufficient funds.")
+        else:
+            from datetime import datetime
+            transaction = Amount(amount, datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "WITHDRAWAL")
+            self.__balance -= amount
+            self.transactions.append(transaction)
+            
+
     def print_transaction_history(self):
         if not self.transactions:
             print("You don't have any transactions.")
+
         else:
             for transaction in self.transactions:
                 if isinstance(transaction, Amount):
