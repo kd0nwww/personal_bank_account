@@ -56,3 +56,15 @@ class PersonalAccount:
     
     def set_account_holder(self, account_holder):
         self.__account_holder = account_holder
+
+    def __str__(self):
+        return f"Account number: {self.__account_number}\nAccount holder: {self.__account_holder}\nBalance: {self.__balance}"
+    
+    def __add__(self, amount):
+        self.__balance += amount.get_balance()
+
+    def __sub__(self, amount):
+        if self.__balance - amount.get_balance() < 0:
+            print("Insufficient funds.")
+        else:
+            self.__balance -= amount.get_balance()
