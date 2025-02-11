@@ -11,6 +11,8 @@ written on Python
 ## bank.py
 This file contains `Amount` and `PersonalAccount` classes. These are the main things in this repository.
 
+![UML_diagram](UML_diagram.png)
+
 ## **Amount class**
 - **Attributes**
     - `amount: float` - the amount of money
