@@ -22,6 +22,7 @@ class PersonalAccount:
         self.transactions.append(transaction)
 
     def withdraw(self, amount: float):
+        # Checking the amount of money available
         if self.__balance - amount < 0:
             print("Insufficient funds.")
         else:
@@ -39,6 +40,7 @@ class PersonalAccount:
                 if isinstance(transaction, Amount):
                     print("---" * 10)
                     print(str(transaction))
+                    print("---" * 10)
 
     def get_balance(self):
         return self.__balance
@@ -58,10 +60,10 @@ class PersonalAccount:
     def __str__(self):
         return f"Account number: {self.__account_number}\nAccount holder: {self.__account_holder}\nBalance: {self.__balance}"
     
-    def __add__(self, amount: Amount):
+    def __add__(self, amount):
         self.__balance += amount.get_balance()
 
-    def __sub__(self, amount: Amount):
+    def __sub__(self, amount):
         if self.__balance - amount.get_balance() < 0:
             print("Insufficient funds.")
         else:
